@@ -12,6 +12,10 @@ git clone https://github.com/missing-user/DWL5500XY-Python/.git
 cd DWL5500XY-Python
 pip install -r requirements.txt
 ```
+# Quickstart
+Place the sensor according to one of the graphics below. Dual axis angle measurement is only available when oriented as in Figure 32.
+![Graphic about mounting styles from the instruction manual](angle_measurement_modes.png)
+
 
 # Usage
 See the test.py for example code, most features are explored here. 
