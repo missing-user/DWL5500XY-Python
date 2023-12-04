@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "DWL5500XY"
+authors = [
+    {name = "Philipp Juasic", email = "philipp@jurasic.dev"},
+    {name = "Ajs R. Stormholt", email = "nicetry@gmail.com"},
+]
+description = "An inofficial python library for the Digipas DWL5500XY high precision inclinometer."
+readme = "README.md"
+requires-python = ">=3"
+keywords = ["inclination", "digipas", "DWL5500XY", "DWL5500", "DWL-5500XY", "inclinometer"]
+license = {text = "Ms-PL"}
+dependencies = [
+    "pyserial"
+  ]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/missing-user/py-DWL5500XY"

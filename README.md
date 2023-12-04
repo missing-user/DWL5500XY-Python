@@ -8,21 +8,20 @@ The DWL5500-XY is an inclinometer (sensor that measures the angle against gravit
 > [!IMPORTANT]
 > Both the libraries `serial` and `pyserial` can be imported as `import serial`. This module expects a `pyserial` installation, and will not work with the incorrect library!
 ```sh
-git clone https://github.com/missing-user/DWL5500XY-Python/.git
-cd DWL5500XY-Python
-pip install -r requirements.txt
+git clone https://github.com/missing-user/py-DWL5500XY.git
+pip install py-DWL5500XY
 ```
 # Quickstart
-1. Place the sensor according to one of the graphics below. Dual axis angle measurement is only available when oriented as in Figure 32 ![Graphic about mounting styles from the instruction manual](angle_measurement_modes.png)
+1. Place the sensor according to one of the graphics below. Dual axis angle measurement is only available when oriented as in Figure 32 ![Graphic about mounting styles from the instruction manual](docs/angle_measurement_modes.png)
 2. Let the sensor warm up and settle in for 15 minutes after connecting it to power to get the full measurement accuracy.
 3. Run `python inclinometer_gui.py` from your terminal to open the recording tool.
 4. It will ask you for the serial port your device is connected to. Type it into the terminal and press enter.
 # Usage
-1. Open the serial connection. On Windows you can find the port by opening `Windows Key > Device Manager > COM Devices` and identifying the COM port that appears when plugging in the USB to serial converter of your sensor. On Linux, you can list connected serial devices using `ls /sys/class/tty/ttyUSB*`. Replace the port name in the code by the one you identified. ![windows screenshot](Windows10USB.png)
+1. Open the serial connection. On Windows you can find the port by opening `Windows Key > Device Manager > COM Devices` and identifying the COM port that appears when plugging in the USB to serial converter of your sensor. On Linux, you can list connected serial devices using `ls /sys/class/tty/ttyUSB*`. Replace the port name in the code by the one you identified. ![windows screenshot](docs/Windows10USB.png)
   ```python
   import os
   import DWL5500XY
-  sc = DWL5500XY.TiltSensor(True) # The argument controls Logging level
+  sc = DWL5500XY.Sensor(True) # The argument controls Logging level
   if os.name == 'nt':
     sc.open_connection("COM5") # Windows style serial port
   else:

@@ -13,7 +13,7 @@ matplotlib.use("tkAgg")
 
 # set the port name
 portname = input("Enter the serial port name that the sensor is connected to (e.g. COM5):")
-sc = DWL5500XY.TiltSensor(True)
+sc = DWL5500XY.Sensor(True)
 sc.open_connection(portname)
 
 sc.initialize_sensor()

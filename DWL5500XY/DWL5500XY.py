@@ -2,7 +2,7 @@
 
 import serial
 
-class TiltSensor(object):
+class Sensor(object):
     # Constant values
     DEVICE = 0x01
     COMPUTER = 0x06
@@ -114,7 +114,7 @@ class TiltSensor(object):
             self.buf = self.buf[self.EXPECTED_BYTES:]
             return self.parse_response(message)
 
-    def parse_response(self, response):
+    def parse_response(self, response)-> (float | dict[str, float]):
 
         if len(response) == self.EXPECTED_BYTES:
             # Single mode and stand confirmed
@@ -212,7 +212,6 @@ class TiltSensor(object):
         self.mode = self.DUAL_MODE
         self.alt_dual_xval = self.dual_xval = 0
         self.alt_dual_yval = self.dual_yval = 0
-            return
 
 #        outbuffer = [self.COMPUTER, self.ADDRESS, 0x0A,
 #                     self.RESET_ALT_ZERO, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
@@ -321,4 +320,4 @@ class TiltSensor(object):
                 return
         else:
             print("Failed to enter calibration mode")
-             return
+            return
