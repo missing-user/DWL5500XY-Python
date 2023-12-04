@@ -2,7 +2,7 @@
 Python library and a small recording script for the [Digipass DWL5500XY inclinometer](https://www.digipas.com/product/precision-measurement/2-axis-inclination-sensor-module/dwl-5500xy.php), which fixes a few minor in [Stormholt's implementation](https://github.com/Stormholt/DWL5500XY-Python). 
 For further details regarding the sensor, please read the [instruction manual](https://www.digipas.com/documents/DWL-5x000%20Instruction%20Manual-rev.2.4.12.pdf). 
 
-The DWL5500-XY is an inclinometer (sensor that measures the angle against gravity) with an accuracy and precision of 0.001 deg. It internally uses a high precision accelerometer and therefore uses strong filtering to get rid of the noise. Measurements therefore need some time to settle (up to 5 minutes after sharp movements. Settling time is lower for small movement).
+The DWL5500-XY is an inclinometer (sensor that measures the angle against gravity) with an accuracy and precision of 0.001 deg. It internally uses a high precision accelerometer and therefore uses strong filtering to get rid of the noise. Measurements therefore need some time to settle (up to 5 minutes after sharp movements. Settling time is lower for small movements).
 
 # Installation
 > [!IMPORTANT]
