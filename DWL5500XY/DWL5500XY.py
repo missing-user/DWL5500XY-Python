@@ -97,6 +97,7 @@ class TiltSensor(object):
                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
         outbuffer = bytearray(outbuffer)
         self.conn.write(outbuffer)
+        return self.read_response() # Wait until mode has been successfully set and the sensor has responded again
 
     def read_response(self):
         # Method reads the response of the device and returns either, None and a diagnostic message or a string with the reponse values.
