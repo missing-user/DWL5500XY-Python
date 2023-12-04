@@ -1,3 +1,4 @@
+[![Upload Python Package](https://github.com/missing-user/py-DWL5500XY/actions/workflows/python-publish.yml/badge.svg)](https://github.com/missing-user/py-DWL5500XY/actions/workflows/python-publish.yml)
 # Description
 Python library and a small recording script for the [Digipass DWL5500XY inclinometer](https://www.digipas.com/product/precision-measurement/2-axis-inclination-sensor-module/dwl-5500xy.php), which fixes a few minor in [Stormholt's implementation](https://github.com/Stormholt/DWL5500XY-Python). 
 For further details regarding the sensor, please read the [instruction manual](https://www.digipas.com/documents/DWL-5x000%20Instruction%20Manual-rev.2.4.12.pdf). 
