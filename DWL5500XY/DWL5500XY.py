@@ -35,7 +35,8 @@ class TiltSensor(object):
         # """
         self.print_response = print_response
         self.conn = None
-        self.location_code = 0x00
+        self.country_code = 0x00
+        self.city_code = 0x01
         self.single_val = 0.0
         self.alt_single_val = 0.0
         self.dual_xval = 0.0
@@ -78,8 +79,9 @@ class TiltSensor(object):
         # send command to the device
         self.conn.write(command)
 
-    def set_location_code(self, location_code):
-        self.location_code = location_code
+    def set_location_code(self, country_code, city_code=0x01):
+        self.country_code = country_code
+        self.city_code = city_code
 
     def set_mode(self, mode):
         # Sets the mode of the device byt creating a buffer array and sending it to the device.
@@ -88,8 +90,8 @@ class TiltSensor(object):
             outbuffer = [self.COMPUTER, self.DEVICE, mode, 0x0A,
                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
         elif self.mode == self.LOCATION_MODE:
-            outbuffer = [self.COMPUTER, self.DEVICE, mode, self.location_code,
-                         0x0E, 0x00, 0x00, 0x5A, 0x00, 0x00, 0x00, 0x00]
+            outbuffer = [self.COMPUTER, self.DEVICE, mode, self.country_code, self.city_code,
+                         0x00, 0x00, 0x5A, 0x00, 0x00, 0x00, 0x00]
         else:
             outbuffer = [self.COMPUTER, self.DEVICE, mode, 0xAA,
                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
