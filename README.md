@@ -37,7 +37,6 @@ else:
 sc.initialize_sensor()
 sc.set_location_code(0x17, 0x0E) # Germany, Munich
 sc.set_mode(sc.LOCATION_MODE) # Call after setting the location code
-sc.read_response()
 ```
 5. Switch the sensor into the correct measurement mode. It supports dual axis angle measurement (in degrees) (default), single axis angle measurement (in degrees), vibration measurement (in multiples of g).
 ```python
