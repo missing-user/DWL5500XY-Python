@@ -1,5 +1,6 @@
 # Project description
-Python library and a small recording script for the Digipass DWL5500XY inclinometer. 
+Python library and a small recording script for the [Digipass DWL5500XY inclinometer](https://www.digipas.com/product/precision-measurement/2-axis-inclination-sensor-module/dwl-5500xy.php). 
+The implementation follows what was specified in the [instruction manual](https://www.digipas.com/documents/DWL-5x000%20Instruction%20Manual-rev.2.4.12.pdf). 
 
 # Installation
 > [!IMPORTANT]
