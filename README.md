@@ -13,14 +13,12 @@ cd DWL5500XY-Python
 pip install -r requirements.txt
 ```
 # Quickstart
-Place the sensor according to one of the graphics below. Dual axis angle measurement is only available when oriented as in Figure 32.
+1. Place the sensor according to one of the graphics below. Dual axis angle measurement is only available when oriented as in Figure 32.
 ![Graphic about mounting styles from the instruction manual](angle_measurement_modes.png)
-
-
+2. Let the sensor warm up and settle in for 15 minutes after connecting it to power to get the full measurement accuracy.
+3. Run `python inclinometer_gui.py` from your terminal to open the recording tool. 
 # Usage
 See the test.py for example code, most features are explored here. 
-
-1. Let the sensor warm up and settle in for 15 minutes after connecting it to power to get the full measurement accuracy.
 2. Open the serial connection. On Windows you can find the port by opening `Windows Key > Device Manager > COM Devices` and identifying the COM port that appears when plugging in the USB to serial converter of your sensor. On Linux, you can list connected serial devices using `ls /sys/class/tty/ttyUSB*`. Replace the port name in the code by the one you identified.
 ![windows screenshot](Windows10USB.png)
 ```python
@@ -48,7 +46,8 @@ sc.set_mode(sc.DUAL_MODE)
 ```python
 sc.read_response() # Blocking function, sensor returns measurements at a rate of 10Hz 
 ```
-
+# Re-Calibration
+Connect to the sensor as usual, then call `sc.calibration()` and follow the instructions from the terminal.
 > [!CAUTION]
 > ***Calling the calibration function will overwrite the factory settings!***
 >
