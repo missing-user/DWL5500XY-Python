@@ -28,7 +28,13 @@ if os.name == 'nt':
 else:
   sc.open_connection('/dev/ttyUSB0') # Linux style serial port
 ```
-3. 
+3. Initialize the sensor and set the location you are operating in (county codes can be found starting on page 60 of the instruction manual). The location dependent gravitational acceleration constant `g` is internally used for filtering. 
+```python
+sc.initialize_sensor()
+sc.set_location_code(0x17, 0x0E) # Germany, Munich
+sc.set_mode(sc.LOCATION_MODE) # Call after setting the location code
+sc.read_response()
+``` 
 
 > [!CAUTION]
 > ***Calling the calibration function will overwrite the factory settings!***
