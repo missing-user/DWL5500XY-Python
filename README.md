@@ -1,6 +1,8 @@
-# Project description
-Python library and a small recording script for the [Digipass DWL5500XY inclinometer](https://www.digipas.com/product/precision-measurement/2-axis-inclination-sensor-module/dwl-5500xy.php). 
-The implementation follows what was specified in the [instruction manual](https://www.digipas.com/documents/DWL-5x000%20Instruction%20Manual-rev.2.4.12.pdf). 
+# Description
+Python library and a small recording script for the [Digipass DWL5500XY inclinometer](https://www.digipas.com/product/precision-measurement/2-axis-inclination-sensor-module/dwl-5500xy.php), which fixes a few minor in [Stormholt's implementation](https://github.com/Stormholt/DWL5500XY-Python). 
+For further details regarding the sensor, please read the [instruction manual](https://www.digipas.com/documents/DWL-5x000%20Instruction%20Manual-rev.2.4.12.pdf). 
+
+The DWL5500-XY is an inclinometer (sensor that measures the angle against gravity) with an accuracy and precision of 0.001 deg. It internally uses a high precision accelerometer and therefore uses strong filtering to get rid of the noise. Measurements therefore need some time to settle (up to 5 minutes after sharp movements. Settling time is lower for small movement).
 
 # Installation
 > [!IMPORTANT]
@@ -12,8 +14,9 @@ pip install -r requirements.txt
 ```
 
 # Usage
-See the test.py for example code, most features are explored here.
+See the test.py for example code, most features are explored here. 
 
+0. Let the sensor warm up and settle in for 15 minutes after connecting it to power to get the full measurement accuracy.
 1. Initialize the sensor, the boolean argument controls wether received values are printed to the terminal.
 ```python
 import DWL5500XY
@@ -34,7 +37,12 @@ sc.initialize_sensor()
 sc.set_location_code(0x17, 0x0E) # Germany, Munich
 sc.set_mode(sc.LOCATION_MODE) # Call after setting the location code
 sc.read_response()
-``` 
+```
+5. Switch the sensor into the correct measurement mode. It supports dual axis angle measurement (in degrees) (default), single axis angle measurement (in degrees), vibration measurement (in multiples of g). 
+4. Read data from the sensor.
+```python
+sc.read_response()
+```
 
 > [!CAUTION]
 > ***Calling the calibration function will overwrite the factory settings!***
