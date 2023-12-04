@@ -20,16 +20,13 @@ Place the sensor according to one of the graphics below. Dual axis angle measure
 # Usage
 See the test.py for example code, most features are explored here. 
 
-0. Let the sensor warm up and settle in for 15 minutes after connecting it to power to get the full measurement accuracy.
-1. Initialize the sensor, the boolean argument controls wether received values are printed to the terminal.
-```python
-import DWL5500XY
-sc = DWL5500XY.TiltSensor(True)
-```
+1. Let the sensor warm up and settle in for 15 minutes after connecting it to power to get the full measurement accuracy.
 2. Open the serial connection. On Windows you can find the port by opening `Windows Key > Device Manager > COM Devices` and identifying the COM port that appears when plugging in the USB to serial converter of your sensor. On Linux, you can list connected serial devices using `ls /sys/class/tty/ttyUSB*`. Replace the port name in the code by the one you identified.
 ![windows screenshot](Windows10USB.png)
 ```python
 import os
+import DWL5500XY
+sc = DWL5500XY.TiltSensor(True) # The argument controls Logging level
 if os.name == 'nt':
   sc.open_connection("COM5") # Windows style serial port
 else:
