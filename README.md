@@ -13,39 +13,36 @@ cd DWL5500XY-Python
 pip install -r requirements.txt
 ```
 # Quickstart
-1. Place the sensor according to one of the graphics below. Dual axis angle measurement is only available when oriented as in Figure 32.
-![Graphic about mounting styles from the instruction manual](angle_measurement_modes.png)
+1. Place the sensor according to one of the graphics below. Dual axis angle measurement is only available when oriented as in Figure 32 ![Graphic about mounting styles from the instruction manual](angle_measurement_modes.png)
 2. Let the sensor warm up and settle in for 15 minutes after connecting it to power to get the full measurement accuracy.
-3. Run `python inclinometer_gui.py` from your terminal to open the recording tool. 
+3. Run `python inclinometer_gui.py` from your terminal to open the recording tool.
 # Usage
-See the test.py for example code, most features are explored here. 
-2. Open the serial connection. On Windows you can find the port by opening `Windows Key > Device Manager > COM Devices` and identifying the COM port that appears when plugging in the USB to serial converter of your sensor. On Linux, you can list connected serial devices using `ls /sys/class/tty/ttyUSB*`. Replace the port name in the code by the one you identified.
-![windows screenshot](Windows10USB.png)
-```python
-import os
-import DWL5500XY
-sc = DWL5500XY.TiltSensor(True) # The argument controls Logging level
-if os.name == 'nt':
-  sc.open_connection("COM5") # Windows style serial port
-else:
-  sc.open_connection('/dev/ttyUSB0') # Linux style serial port
-```
-3. Initialize the sensor and set the location you are operating in (county codes can be found starting on page 60 of the instruction manual). The location dependent gravitational acceleration constant `g` is internally used for filtering. 
-```python
-sc.initialize_sensor()
-sc.set_location_code(0x17, 0x0E) # Germany, Munich
-sc.set_mode(sc.LOCATION_MODE) # Call after setting the location code
-```
-5. Switch the sensor into the correct measurement mode. It supports dual axis angle measurement (in degrees) (default), single axis angle measurement (in degrees), vibration measurement (in multiples of g).
-```python
-sc.set_mode(sc.DUAL_MODE)
-# sc.set_mode(sc.SINGLE_MODE)
-# sc.set_mode(sc.VIBRO_MODE)
-```
+1. Open the serial connection. On Windows you can find the port by opening `Windows Key > Device Manager > COM Devices` and identifying the COM port that appears when plugging in the USB to serial converter of your sensor. On Linux, you can list connected serial devices using `ls /sys/class/tty/ttyUSB*`. Replace the port name in the code by the one you identified. ![windows screenshot](Windows10USB.png)
+  ```python
+  import os
+  import DWL5500XY
+  sc = DWL5500XY.TiltSensor(True) # The argument controls Logging level
+  if os.name == 'nt':
+    sc.open_connection("COM5") # Windows style serial port
+  else:
+    sc.open_connection('/dev/ttyUSB0') # Linux style serial port
+  ```
+2. Initialize the sensor and set the location you are operating in (county codes can be found starting on page 60 of the instruction manual). The location dependent gravitational acceleration constant `g` is internally used for filtering. 
+  ```python
+  sc.initialize_sensor()
+  sc.set_location_code(0x17, 0x0E) # Germany, Munich
+  sc.set_mode(sc.LOCATION_MODE) # Call after setting the location code
+  ```
+3. Switch the sensor into the correct measurement mode. It supports dual axis angle measurement (in degrees) (default), single axis angle measurement (in degrees), vibration measurement (in multiples of g).
+  ```python
+  sc.set_mode(sc.DUAL_MODE)
+  # sc.set_mode(sc.SINGLE_MODE)
+  # sc.set_mode(sc.VIBRO_MODE)
+  ```
 4. Periodically read data from the sensor.
-```python
-sc.read_response() # Blocking function, sensor returns measurements at a rate of 10Hz 
-```
+  ```python
+  sc.read_response() # Blocking function, sensor returns measurements at a rate of 10Hz 
+  ```
 # Re-Calibration
 Connect to the sensor as usual, then call `sc.calibration()` and follow the instructions from the terminal.
 > [!CAUTION]
