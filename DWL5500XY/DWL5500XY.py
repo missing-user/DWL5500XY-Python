@@ -114,7 +114,7 @@ class Sensor(object):
             self.buf = self.buf[self.EXPECTED_BYTES:]
             return self.parse_response(message)
 
-    def parse_response(self, response)-> (float | dict[str, float]):
+    def parse_response(self, response):
 
         if len(response) == self.EXPECTED_BYTES:
             # Single mode and stand confirmed
