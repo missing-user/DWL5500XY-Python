@@ -85,7 +85,7 @@ class Sensor(object):
 
     def set_mode(self, mode):
         # Sets the mode of the device byt creating a buffer array and sending it to the device.
-        self.mode = mode
+        self.mode = int.from_bytes((mode).to_bytes(1)) # validate that ot is 1 byte value
         if self.mode == self.CALIBRATION_MODE:  # if the mode is calibration the fourth byte has to be 0x0A
             outbuffer = [self.COMPUTER, self.DEVICE, mode, 0x0A,
                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
