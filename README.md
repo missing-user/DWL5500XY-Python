@@ -10,7 +10,7 @@ The DWL5500-XY is an inclinometer (sensor that measures the angle against gravit
 > Both the libraries `serial` and `pyserial` can be imported as `import serial`. This module expects a `pyserial` installation, and will not work with the incorrect library!
 ```sh
 git clone https://github.com/missing-user/py-DWL5500XY.git
-pip install py-DWL5500XY
+pip install DWL5500XY
 ```
 # Quickstart
 1. Place the sensor according to one of the graphics below. Dual axis angle measurement is only available when oriented as in Figure 32 ![Graphic about mounting styles from the instruction manual](docs/angle_measurement_modes.png)
