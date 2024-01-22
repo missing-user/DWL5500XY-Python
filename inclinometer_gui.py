@@ -56,7 +56,7 @@ def toggle_mode(e):
         sc.set_mode(sc.DUAL_MODE)
         ax.legend(["x [$^\circ$]", "y [$^\circ$]"])
     else:
-        sc.set_mode(sc.VIBRO)
+        sc.set_mode(sc.VIBRO_MODE)
         ax.legend(["vibration [$g$]"])
 
 axtoggle = plt.axes([0.7, 0.9, 0.1, 0.08])
