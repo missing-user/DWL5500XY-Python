@@ -18,5 +18,8 @@ dependencies = [
   ]
 dynamic = ["version"]
 
+[tool.setuptools.dynamic]
+version = {attr = "DWL5500XY.__version__"}
+
 [project.urls]
 Homepage = "https://github.com/missing-user/py-DWL5500XY"
